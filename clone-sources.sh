@@ -1,18 +1,14 @@
 #! /bin/bash
 
-APPLICATIONS=( \
-  LA,la-webapp \
-  UM,usermanagement-service \
-  BB,badgemanagement-service \
-  AP,applications-service \
-  AZ,authorisation-service \
-  MG,message-service \
-  RD,referencedata-service \
-  CA,citizen-webapp \
-)
+. applications.sh
 
 for application in "${APPLICATIONS[@]}"
-do IFS=","
-set -- "$application"
-  echo "SHORTCODE=$1 NAME=$2"
+do
+  SHORTCODE=$(echo -n "$application" | cut -d, -f1)
+  NAME=$(echo -n "$application" | cut -d, -f2)
+
+  echo "SHORTCODE $SHORTCODE NAME $NAME"
+  #git clone "https://$GITHUB_CREDENTIAL@github.com/uk-gov-dft/$NAME.git"
+  BRANCH_NAME="${SHORTCODE}_BRANCH" 
+  echo "BRANCH_NAME = ${!BRANCH_NAME}"
 done
