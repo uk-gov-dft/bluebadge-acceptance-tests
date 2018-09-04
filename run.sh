@@ -8,5 +8,6 @@ echo "APPLICATIONS ${APPLICATIONS[*]}"
 . run-setup-dev-env.sh
 . run-compute-versions.sh
 . run-build-env-feature-file.sh
+. run-start-services.sh
 
 
