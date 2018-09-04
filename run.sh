@@ -4,4 +4,8 @@
 
 echo "APPLICATIONS ${APPLICATIONS[*]}"
 
-. clone-sources.sh
+. run-clone-sources.sh
+. run-setup-dev-env.sh
+. run-compute-versions.sh
+
+
