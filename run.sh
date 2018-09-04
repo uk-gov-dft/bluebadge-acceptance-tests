@@ -1,5 +1,6 @@
 #! /bin/bash
 
+. common.sh
 . applications.sh
 
 echo "APPLICATIONS ${APPLICATIONS[*]}"
@@ -10,4 +11,5 @@ echo "APPLICATIONS ${APPLICATIONS[*]}"
 . run-build-env-feature-file.sh
 . run-start-services.sh
 . run-acceptance-tests.sh
+. run-stop-services.sh
 
