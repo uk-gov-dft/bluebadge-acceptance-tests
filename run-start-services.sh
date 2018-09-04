@@ -32,7 +32,7 @@ pushd dev-env
 # Cleanup existing containers
 tearDown
 
-. dev-env-develop/env.sh
+. env.sh
 if ! [[ "$BRANCH_NAME" =~ ^develop.*|^release.* ]]; then
    . env-feature.sh
 fi
