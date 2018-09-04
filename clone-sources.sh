@@ -1,7 +1,5 @@
 #! /bin/bash
 
-. applications.sh
-
 for application in "${APPLICATIONS[@]}"
 do
   SHORTCODE=$(echo -n "$application" | cut -d, -f1)
