@@ -4,4 +4,4 @@
 
 echo "APPLICATIONS ${APPLICATIONS[*]}"
 
-./clone-sources.sh
+. clone-sources.sh
