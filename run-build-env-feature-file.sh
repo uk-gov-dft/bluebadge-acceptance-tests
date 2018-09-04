@@ -13,4 +13,6 @@ do
   popd
 done
 
+cat "$TMP_FILE"
+
 mv  "$TMP_FILE" dev-env
