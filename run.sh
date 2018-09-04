@@ -9,5 +9,5 @@ echo "APPLICATIONS ${APPLICATIONS[*]}"
 . run-compute-versions.sh
 . run-build-env-feature-file.sh
 . run-start-services.sh
-
+. run-acceptance-tests.sh
 
