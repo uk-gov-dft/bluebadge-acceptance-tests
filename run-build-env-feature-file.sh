@@ -1,7 +1,7 @@
 #! /bin/bash
 
 TMP_FILE=/tmp/env-feature.sh
-rm "$TMP_FILE" 
+rm "$TMP_FILE" || true
 
 for application in "${APPLICATIONS[@]}"
 do
