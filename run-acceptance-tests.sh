@@ -7,6 +7,6 @@ do
   NAME=$(echo -n "$application" | cut -d, -f2)
   
   pushd "$NAME"
-  (cd acceptanceTests && ./gradlew acceptanceTest -PbuildProfile=local -Dos=linux -Dheadless=true)
+  (./gradlew acceptanceTest -DbaseUrl=http://localhost:8080 -Dheadless=true)
   popd
 done

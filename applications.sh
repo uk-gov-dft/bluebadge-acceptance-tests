@@ -8,7 +8,6 @@ APPLICATIONS=( \
   AZ,authorisation-service \
   MG,message-service \
   RD,referencedata-service \
-#  CA,citizen-webapp \
 )
 
 export APPLICATIONS
