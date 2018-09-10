@@ -32,6 +32,7 @@ pipeline {
                    branch: "develop"
                 )
                 sh 'ls -la'
+                sh 'ls -la ../'
             }
         }
         stage('Acceptance Tests') {
@@ -45,7 +46,7 @@ pipeline {
                 echo 'RD_BRANCH: ${env.RD_BRANCH}'
                 echo 'CA_BRANCH: ${env.CA_BRANCH}'
 
-                sh 'ls -la'
+                sh 'ls -la ../'
             }
         }
     }
