@@ -36,7 +36,7 @@ pipeline {
            steps {
             sh 'bash run-compute-versions.sh'
             sh 'bash run-build-env-feature-file.sh' 
-            stash includes: 'env-feature.sh', name: 'featurefile'
+            sh 'ls -la'
            }  
         }
 
@@ -50,10 +50,6 @@ pipeline {
                 echo "MG_BRANCH: ${env.MG_BRANCH}"
                 echo "RD_BRANCH: ${env.RD_BRANCH}"
                 echo "CA_BRANCH: ${env.CA_BRANCH}"
-
-                unstash 'featurefile'
-
-                sh 'cat env-feature.sh'
             }
         }
     }
