@@ -24,18 +24,6 @@ pipeline {
      }
 
     stages {
-        stage('Start Services') {
-            steps {
-                dir('acceptance-tests'){
-                    git(
-                       url: "https://github.com/uk-gov-dft/dev-env.git",
-                       credentialsId: 'dft-buildbot-valtech',
-                       branch: "develop"
-                    )
-                    sh 'ls -la'
-                }
-            }
-        }
         stage('Acceptance Tests') {
             steps {
                 echo 'LA_BRANCH: ${env.LA_BRANCH}'
@@ -47,6 +35,15 @@ pipeline {
                 echo 'RD_BRANCH: ${env.RD_BRANCH}'
                 echo 'CA_BRANCH: ${env.CA_BRANCH}'
 
+                dir('acceptance-tests'){
+                    git(
+                       url: "https://github.com/uk-gov-dft/dev-env.git",
+                       credentialsId: 'dft-buildbot-valtech',
+                       branch: "develop"
+                    )
+                    sh 'ls -la'
+                }
+
                 sh 'ls -la'
             }
         }
@@ -55,9 +52,7 @@ pipeline {
     post {
         always {
             dir('acceptance-tests'){
-                dir ('dev-env') {
-                    sh 'bash cleanup.sh'
-                }
+                sh 'ls -la'
             }
             deleteDir()
         }
