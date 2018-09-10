@@ -54,9 +54,7 @@ pipeline {
 
     post {
         always {
-            dir('dev-env') {
-                sh 'bash cleanup.sh'
-            }
+            deleteDir()
         }
         success {
             echo 'I succeeeded!'
