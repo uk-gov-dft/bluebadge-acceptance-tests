@@ -34,6 +34,7 @@ pipeline {
     
         stage('Create Env Feature File') {
            steps {
+            sh 'bash run-compute-versions.sh'
             sh 'bash run-build-env-feature-file.sh' 
             stash includes: '/tmp/env-feature.sh', name: 'env-feature.sh'
            }  
