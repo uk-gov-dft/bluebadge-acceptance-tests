@@ -39,6 +39,7 @@ pipeline {
             sh 'bash run-build-env-feature-file.sh' 
             sh 'ls -la'
             stash includes: 'dev-env/**/*', name: 'dev-env' 
+            stash incluees: 'la-webapp/**/*', name: 'la-webapp'
            }  
         }
 
@@ -59,6 +60,15 @@ pipeline {
 
                 sh 'bash run-start-services.sh' 
                 
+            }
+        }
+
+        stage('Run Acceptance Tests - la-webapp') {
+            steps {
+                dir('la-webapp'){
+                    unstash 'la-webapp'
+                    sh 'bash run-acceptance-tests-for.sh "la-webapp"'
+                }
             }
         }
     }
