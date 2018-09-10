@@ -38,7 +38,7 @@ pipeline {
             sh 'bash run-compute-versions.sh'
             sh 'bash run-build-env-feature-file.sh' 
             sh 'ls -la'
-            stash includes: 'dev-env', name: 'dev-env' 
+            stash includes: 'dev-env/**/*', name: 'dev-env' 
            }  
         }
 
@@ -53,9 +53,12 @@ pipeline {
                 echo "RD_BRANCH: ${env.RD_BRANCH}"
                 echo "CA_BRANCH: ${env.CA_BRANCH}"
 
-                unstash 'dev-env'
-                
+                dir('dev'env'){
+                    unstash 'dev-env'
+                }
+
                 sh 'bash run-start-services.sh' 
+                
             }
         }
     }
