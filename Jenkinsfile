@@ -46,22 +46,13 @@ pipeline {
                        branch: "develop"
                     )
                 }
-
-                sh 'bash run.sh'
             }
         }
     }
 
     post {
         always {
-            dir('dev-env'){
-                git(
-                   url: "https://github.com/uk-gov-dft/dev-env.git",
-                   credentialsId: 'dft-buildbot-valtech',
-                   branch: "develop"
-                )
-                sh 'bash cleanup.sh'
-            }
+            deleteDir()
         }
         success {
             echo 'I succeeeded!'
