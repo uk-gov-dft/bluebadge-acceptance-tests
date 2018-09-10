@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+. common.sh
+. applications.sh
+
 echo "$GITHUB_TOKEN" > ~/.ssh/github_token
 
 pushd dev-env
