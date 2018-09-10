@@ -24,6 +24,18 @@ pipeline {
      }
 
     stages {
+        stage('Start Services) {
+            steps {
+                git(
+                   url: "https://github.com/uk-gov-dft/dev-env.git",
+                   credentialsId: 'dft-buildbot-valtech',
+                   branch: "develop"
+                )
+                dir('dev-env') {
+                    sh 'bash run-start-services.sh'
+                }
+            }
+        }
         stage('Acceptance Tests') {
             steps {
                 echo 'LA_BRANCH: ${env.LA_BRANCH}'
@@ -35,8 +47,30 @@ pipeline {
                 echo 'RD_BRANCH: ${env.RD_BRANCH}'
                 echo 'CA_BRANCH: ${env.CA_BRANCH}'
 
-                sh 'bash run.sh'
+                dir('dev-env') {
+                    sh 'docker-compose ps'
+                }
             }
+        }
+    }
+
+    post {
+        always {
+            dir('dev-env') {
+                sh 'bash cleanup.sh'
+            }
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
         }
     }
 }
