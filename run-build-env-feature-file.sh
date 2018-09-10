@@ -3,7 +3,7 @@
 . common.sh
 . applications.sh
 
-TMP_FILE=/tmp/env-feature.sh
+TMP_FILE=env-feature.sh
 rm "$TMP_FILE" || true
 
 for application in "${APPLICATIONS[@]}"
