@@ -1,3 +1,4 @@
+def REPONAME = "${scm.getUserRemoteConfigs()[0].getUrl()}"
 
 pipeline {
     agent any
@@ -25,6 +26,15 @@ pipeline {
      }
 
     stages {
+
+    
+        stage('Clone sources') {
+         git(
+              url: "${REPONAME}",
+              credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
+              branch: "${BRANCH_NAME}"
+           )
+        }
         stage("Acceptance Tests") {
             steps {
                 echo "LA_BRANCH: ${env.LA_BRANCH}"
