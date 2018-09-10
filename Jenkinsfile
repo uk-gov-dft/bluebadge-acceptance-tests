@@ -26,14 +26,14 @@ pipeline {
      }
 
     stages {
-
-    
         stage('Clone sources') {
-         git(
-              url: "${REPONAME}",
-              credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
-              branch: "${BRANCH_NAME}"
-           )
+            steps {
+                 git(
+                      url: "${REPONAME}",
+                      credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
+                      branch: "${BRANCH_NAME}"
+                   )
+            }
         }
         stage("Acceptance Tests") {
             steps {
