@@ -1,6 +1,8 @@
 # TODO: Refactor this and all the run-regression.sh files so that they use
 #       common functions from a common set of util scripts.
 
+echo "$GITHUB_TOKEN" > ~/.ssh/github_token
+
 tearDown() {
 
     # kill anything that is running
