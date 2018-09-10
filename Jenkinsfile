@@ -31,9 +31,7 @@ pipeline {
                    credentialsId: 'dft-buildbot-valtech',
                    branch: "develop"
                 )
-                dir('dev-env') {
-                    sh 'bash run-start-services.sh'
-                }
+                sh 'ls -la'
             }
         }
         stage('Acceptance Tests') {
