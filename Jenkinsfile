@@ -1,4 +1,6 @@
 pipeline {
+    agent "Functional"
+
     parameters {
         string(defaultValue: 'develop', description: '', name: 'LA_BRANCH')
         string(defaultValue: 'develop', description: '', name: 'UM_BRANCH')
@@ -23,9 +25,6 @@ pipeline {
 
     stages {
         stage("Acceptance Tests") {
-            agent {
-                label 'Functional'
-            }
             steps {
                 echo "LA_BRANCH: ${env.LA_BRANCH}"
                 echo "UM_BRANCH: ${env.UM_BRANCH}"
