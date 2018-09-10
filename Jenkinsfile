@@ -46,7 +46,7 @@ pipeline {
                     echo "RD_BRANCH: ${env.RD_BRANCH}"
                     echo "CA_BRANCH: ${env.CA_BRANCH}"
 
-                    sh "run.sh"
+                    sh "ls -la"
                 }
             }
         }
