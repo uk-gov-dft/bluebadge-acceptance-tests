@@ -21,6 +21,8 @@ pipeline {
         MG_BRANCH="${params.MG_BRANCH}"
         RD_BRANCH="${params.RD_BRANCH}"
         CA_BRANCH="${params.CA_BRANCH}"
+
+        GITHUB_TOKEN=credentials('GITHUB_TOKEN')
      }
 
     stages {
