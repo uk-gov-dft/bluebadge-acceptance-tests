@@ -52,6 +52,14 @@ pipeline {
                 sh 'ls -la'
             }
         }
+        stage('Something Else') {
+            steps {
+                sh 'ls -la'
+                dir('dev-env') {
+                    sh 'ls -la'
+                }
+            }
+        }
     }
 
     post {
