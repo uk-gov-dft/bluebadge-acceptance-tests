@@ -36,17 +36,22 @@ pipeline {
             }
         }
         stage("Acceptance Tests") {
+            agent {
+                label 'Functional'
+            }
             steps {
-                echo "LA_BRANCH: ${env.LA_BRANCH}"
-                echo "UM_BRANCH: ${env.UM_BRANCH}"
-                echo "BB_BRANCH: ${env.BB_BRANCH}"
-                echo "AP_BRANCH: ${env.AP_BRANCH}"
-                echo "AZ_BRANCH: ${env.AZ_BRANCH}"
-                echo "MG_BRANCH: ${env.MG_BRANCH}"
-                echo "RD_BRANCH: ${env.RD_BRANCH}"
-                echo "CA_BRANCH: ${env.CA_BRANCH}"
+                dir ('acceptance-tests') { 
+                    echo "LA_BRANCH: ${env.LA_BRANCH}"
+                    echo "UM_BRANCH: ${env.UM_BRANCH}"
+                    echo "BB_BRANCH: ${env.BB_BRANCH}"
+                    echo "AP_BRANCH: ${env.AP_BRANCH}"
+                    echo "AZ_BRANCH: ${env.AZ_BRANCH}"
+                    echo "MG_BRANCH: ${env.MG_BRANCH}"
+                    echo "RD_BRANCH: ${env.RD_BRANCH}"
+                    echo "CA_BRANCH: ${env.CA_BRANCH}"
 
-                sh "run.sh"
+                    sh "run.sh"
+                }
             }
         }
     }
