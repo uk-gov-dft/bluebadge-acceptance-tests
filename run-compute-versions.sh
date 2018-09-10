@@ -1,5 +1,8 @@
 #! /bin/bash
 
+. common.sh
+. applications.sh
+
 for application in "${APPLICATIONS[@]}"
 do
   NAME=$(echo -n "$application" | cut -d, -f2)
