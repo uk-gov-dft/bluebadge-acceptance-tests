@@ -45,9 +45,7 @@ pipeline {
                 echo 'RD_BRANCH: ${env.RD_BRANCH}'
                 echo 'CA_BRANCH: ${env.CA_BRANCH}'
 
-                dir('dev-env') {
-                    sh 'docker-compose ps'
-                }
+                sh 'ls -la'
             }
         }
     }
