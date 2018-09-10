@@ -46,6 +46,8 @@ pipeline {
                     sh 'ls -la'
                 }
 
+                stash includes: 'dev-env', name: 'dev-env' 
+
                 sh 'ls -la'
             }
         }
@@ -53,9 +55,8 @@ pipeline {
 
     post {
         always {
-            dir('acceptance-tests'){
-                sh 'ls -la'
-            }
+            unstash 'app' 
+            sh 'ls -la'
             deleteDir()
         }
         success {
