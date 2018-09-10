@@ -43,7 +43,6 @@ pipeline {
                        credentialsId: 'dft-buildbot-valtech',
                        branch: "develop"
                     )
-                    sh 'ls -la'
                 }
 
                 stash includes: 'dev-env', name: 'dev-env' 
