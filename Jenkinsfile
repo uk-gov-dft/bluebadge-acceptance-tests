@@ -39,7 +39,7 @@ pipeline {
             sh 'bash run-build-env-feature-file.sh' 
             sh 'ls -la'
             stash includes: 'dev-env/**/*', name: 'dev-env' 
-            stash incluees: 'la-webapp/**/*', name: 'la-webapp'
+            stash includes: 'la-webapp/**/*', name: 'la-webapp'
            }  
         }
 
