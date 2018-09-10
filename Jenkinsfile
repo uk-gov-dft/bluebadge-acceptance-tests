@@ -45,8 +45,6 @@ pipeline {
                     )
                 }
 
-                stash includes: 'dev-env', name: 'dev-env' 
-
                 sh 'bash run-start-services.sh'
             }
         }
@@ -54,8 +52,14 @@ pipeline {
 
     post {
         always {
-            unstash 'dev-env' 
-            sh 'bash cleanup.sh'
+            dir('dev-env'){
+                git(
+                   url: "https://github.com/uk-gov-dft/dev-env.git",
+                   credentialsId: 'dft-buildbot-valtech',
+                   branch: "develop"
+                )
+                sh 'bash cleanup.sh'
+            }
         }
         success {
             echo 'I succeeeded!'
