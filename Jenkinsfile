@@ -36,7 +36,7 @@ pipeline {
            steps {
             sh 'bash run-compute-versions.sh'
             sh 'bash run-build-env-feature-file.sh' 
-            stash includes: '/tmp/env-feature.sh', name: 'featurefile'
+            stash includes: 'env-feature.sh', name: 'featurefile'
            }  
         }
 
