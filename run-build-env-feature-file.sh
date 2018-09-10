@@ -1,5 +1,8 @@
 #! /bin/bash
 
+. common.sh
+. applications.sh
+
 TMP_FILE=/tmp/env-feature.sh
 rm "$TMP_FILE" || true
 
@@ -12,7 +15,3 @@ do
   echo "export ${SHORTCODE}_VERSION=$(cat VERSION-computed)" >> "$TMP_FILE"
   popd
 done
-
-cat "$TMP_FILE"
-
-mv  "$TMP_FILE" dev-env

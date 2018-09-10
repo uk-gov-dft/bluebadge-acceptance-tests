@@ -26,6 +26,14 @@ pipeline {
      }
 
     stages {
+
+        stage('Create Env Feature File') {
+           steps {
+            sh 'bash run-build-env-feature-file.sh' 
+            stash includes: '/tmp/env-feature.sh', name: 'env-feature.sh'
+           }  
+        }
+
         stage('Acceptance Tests') {
             steps {
                 echo "LA_BRANCH: ${env.LA_BRANCH}"
@@ -37,15 +45,9 @@ pipeline {
                 echo "RD_BRANCH: ${env.RD_BRANCH}"
                 echo "CA_BRANCH: ${env.CA_BRANCH}"
 
-                sh 'ls -la'
+                unstash 'env-feature.sh'
 
-                dir('dev-env'){
-                    git(
-                       url: "https://github.com/uk-gov-dft/dev-env.git",
-                       credentialsId: 'dft-buildbot-valtech',
-                       branch: "develop"
-                    )
-                }
+                sh 'cat env-feature.sh'
             }
         }
     }
