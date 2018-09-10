@@ -38,10 +38,11 @@ pipeline {
             sh 'bash run-compute-versions.sh'
             sh 'bash run-build-env-feature-file.sh' 
             sh 'ls -la'
+            stash includes: 'dev-env', name: 'dev-env' 
            }  
         }
 
-        stage('Acceptance Tests') {
+        stage('Start dev-env') {
             steps {
                 echo "LA_BRANCH: ${env.LA_BRANCH}"
                 echo "UM_BRANCH: ${env.UM_BRANCH}"
@@ -51,6 +52,10 @@ pipeline {
                 echo "MG_BRANCH: ${env.MG_BRANCH}"
                 echo "RD_BRANCH: ${env.RD_BRANCH}"
                 echo "CA_BRANCH: ${env.CA_BRANCH}"
+
+                unstash 'dev-env'
+                
+                sh 'bash run-start-services.sh' 
             }
         }
     }
