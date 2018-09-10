@@ -1,5 +1,3 @@
-def REPONAME = "${scm.getUserRemoteConfigs()[0].getUrl()}"
-
 pipeline {
     agent any
 
@@ -25,29 +23,22 @@ pipeline {
         CA_BRANCH="${params.CA_BRANCH}"
      }
 
+    agent {
+        label 'Functional'
+    }
     stages {
         stage("Acceptance Tests") {
-            agent {
-                label 'Functional'
-            }
             steps {
-                git(
-                     url: "${REPONAME}",
-                     credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
-                     branch: "${BRANCH_NAME}"
-                )
-                dir ('acceptance-tests') { 
-                    echo "LA_BRANCH: ${env.LA_BRANCH}"
-                    echo "UM_BRANCH: ${env.UM_BRANCH}"
-                    echo "BB_BRANCH: ${env.BB_BRANCH}"
-                    echo "AP_BRANCH: ${env.AP_BRANCH}"
-                    echo "AZ_BRANCH: ${env.AZ_BRANCH}"
-                    echo "MG_BRANCH: ${env.MG_BRANCH}"
-                    echo "RD_BRANCH: ${env.RD_BRANCH}"
-                    echo "CA_BRANCH: ${env.CA_BRANCH}"
+                echo "LA_BRANCH: ${env.LA_BRANCH}"
+                echo "UM_BRANCH: ${env.UM_BRANCH}"
+                echo "BB_BRANCH: ${env.BB_BRANCH}"
+                echo "AP_BRANCH: ${env.AP_BRANCH}"
+                echo "AZ_BRANCH: ${env.AZ_BRANCH}"
+                echo "MG_BRANCH: ${env.MG_BRANCH}"
+                echo "RD_BRANCH: ${env.RD_BRANCH}"
+                echo "CA_BRANCH: ${env.CA_BRANCH}"
 
-                    sh "ls -la"
-                }
+                sh "ls -la"
             }
         }
     }
