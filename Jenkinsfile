@@ -27,11 +27,17 @@ pipeline {
         stage('Start Services') {
             steps {
                 dir('acceptance-tests'){
-                    git(
-                       url: "https://github.com/uk-gov-dft/dev-env.git",
-                       credentialsId: 'dft-buildbot-valtech',
-                       branch: "develop"
-                    )
+                    def exists = fileExists 'dev-env'
+                    if (!exists){
+                        new File('dev-env').mkdir()
+                    }
+                    dir ('dev-env') {
+                        git(
+                           url: "https://github.com/uk-gov-dft/dev-env.git",
+                           credentialsId: 'dft-buildbot-valtech',
+                           branch: "develop"
+                        )
+                    }
                     sh 'ls -la'
                 }
             }
