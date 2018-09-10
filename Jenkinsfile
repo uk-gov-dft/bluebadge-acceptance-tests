@@ -3,14 +3,14 @@ pipeline {
     agent any
 
     parameters {
-        textParam(defaultValue: 'develop', description: '', name: 'LA_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'UM_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'BB_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'AP_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'AZ_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'MG_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'RD_BRANCH')
-        textParam(defaultValue: 'develop', description: '', name: 'CA_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'LA_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'UM_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'BB_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'AP_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'AZ_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'MG_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'RD_BRANCH')
+        string(defaultValue: 'develop', description: '', name: 'CA_BRANCH')
     }
 
     stages {
