@@ -45,7 +45,7 @@ pipeline {
                     )
                 }
 
-                sh 'bash run-start-services.sh'
+                sh 'bash run.sh'
             }
         }
     }
