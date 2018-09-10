@@ -24,7 +24,7 @@ pipeline {
      }
 
     stages {
-        stage('Start Services) {
+        stage('Start Services') {
             steps {
                 git(
                    url: "https://github.com/uk-gov-dft/dev-env.git",
