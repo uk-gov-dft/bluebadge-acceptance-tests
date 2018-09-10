@@ -26,20 +26,16 @@ pipeline {
      }
 
     stages {
-        stage('Clone sources') {
-            steps {
-                 git(
-                      url: "${REPONAME}",
-                      credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
-                      branch: "${BRANCH_NAME}"
-                   )
-            }
-        }
         stage("Acceptance Tests") {
             agent {
                 label 'Functional'
             }
             steps {
+                git(
+                     url: "${REPONAME}",
+                     credentialsId: 'username***REMOVED***-github-automation-uk-gov-dft',
+                     branch: "${BRANCH_NAME}"
+                )
                 dir ('acceptance-tests') { 
                     echo "LA_BRANCH: ${env.LA_BRANCH}"
                     echo "UM_BRANCH: ${env.UM_BRANCH}"
