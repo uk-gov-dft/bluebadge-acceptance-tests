@@ -48,7 +48,7 @@ pipeline {
 
                 stash includes: 'dev-env', name: 'dev-env' 
 
-                sh 'ls -la'
+                sh 'bash run-start-services.sh'
             }
         }
     }
@@ -56,8 +56,7 @@ pipeline {
     post {
         always {
             unstash 'dev-env' 
-            sh 'ls -la'
-            deleteDir()
+            sh 'bash cleanup.sh'
         }
         success {
             echo 'I succeeeded!'
