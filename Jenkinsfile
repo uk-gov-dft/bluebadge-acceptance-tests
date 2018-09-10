@@ -27,10 +27,6 @@ pipeline {
         stage('Start Services') {
             steps {
                 dir('acceptance-tests'){
-                    def exists = fileExists 'dev-env'
-                    if (!exists){
-                        new File('dev-env').mkdir()
-                    }
                     dir ('dev-env') {
                         git(
                            url: "https://github.com/uk-gov-dft/dev-env.git",
