@@ -28,6 +28,7 @@ pipeline {
     stages {
         stage('Clone the applications') {
             steps {
+                sh 'bash run-setup-dev-env.sh'
                 sh 'bash run-clone-sources.sh'
             } 
         }
