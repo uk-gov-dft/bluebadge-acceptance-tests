@@ -55,8 +55,10 @@ pipeline {
         stage('Something Else') {
             steps {
                 sh 'ls -la'
-                dir('dev-env') {
-                    sh 'ls -la'
+                dir('acceptance-tests'){
+                    dir('dev-env') {
+                        sh 'ls -la'
+                    }
                 }
             }
         }
