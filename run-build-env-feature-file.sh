@@ -9,6 +9,6 @@ do
   NAME=$(echo -n "$application" | cut -d, -f2)
 
   pushd "$NAME"
-  echo "export ${SHORTCODE}_VERSION=$(cat VERSION-computed)" >> "${WORKSPACE:-./}/env-feature.sh"
+  echo "export ${SHORTCODE}_VERSION=$(cat VERSION-computed)" >> "${WORKSPACE:-./}/dev-env/env-feature.sh"
   popd
 done
