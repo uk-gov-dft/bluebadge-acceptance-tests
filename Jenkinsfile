@@ -26,7 +26,12 @@ pipeline {
      }
 
     stages {
-
+        stage('Clone the applications') {
+            steps {
+                sh 'bash run-clone-sources.sh'
+            } 
+        }
+    
         stage('Create Env Feature File') {
            steps {
             sh 'bash run-build-env-feature-file.sh' 
