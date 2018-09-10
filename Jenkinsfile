@@ -35,6 +35,8 @@ pipeline {
                 echo 'RD_BRANCH: ${env.RD_BRANCH}'
                 echo 'CA_BRANCH: ${env.CA_BRANCH}'
 
+                sh 'ls -la'
+
                 dir('dev-env'){
                     git(
                        url: "https://github.com/uk-gov-dft/dev-env.git",
