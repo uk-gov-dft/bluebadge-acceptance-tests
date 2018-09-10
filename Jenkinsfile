@@ -25,7 +25,7 @@ pipeline {
      }
 
     stages {
-        stage("foo") {
+        stage("Acceptance Tests") {
             steps {
                 echo "LA_BRANCH: ${env.LA_BRANCH}"
                 echo "UM_BRANCH: ${env.UM_BRANCH}"
@@ -35,6 +35,8 @@ pipeline {
                 echo "MG_BRANCH: ${env.MG_BRANCH}"
                 echo "RD_BRANCH: ${env.RD_BRANCH}"
                 echo "CA_BRANCH: ${env.CA_BRANCH}"
+
+                sh "run.sh"
             }
         }
     }
