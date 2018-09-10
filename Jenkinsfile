@@ -65,6 +65,11 @@ pipeline {
 
     post {
         always {
+            dir('dev-env'){
+                unstash 'dev-env'
+            }
+
+            sh 'bash cleanup.sh' 
             deleteDir()
         }
         success {
