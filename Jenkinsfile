@@ -67,8 +67,8 @@ pipeline {
             steps {
                 dir('la-webapp'){
                     unstash 'la-webapp'
-                    sh 'bash run-acceptance-tests-for.sh'
                 }
+                sh 'bash run-acceptance-tests-for.sh' 'la-webapp'
             }
         }
     }
