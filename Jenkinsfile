@@ -40,6 +40,12 @@ pipeline {
             sh 'ls -la'
             stash includes: 'dev-env/**/*', name: 'dev-env' 
             stash includes: 'la-webapp/**/*', name: 'la-webapp'
+            stash includes: 'applications-service/**/*', name: 'applications-service'
+            stash includes: 'badgemanagement-service/**/*', name: 'badgemanagement-service'
+            stash includes: 'authorisation-service/**/*', name: 'authorisation-service'
+            stash includes: 'message-service/**/*', name: 'message-service'
+            stash includes: 'referencedata-service/**/*', name: 'referencedata-service'
+            stash includes: 'usermanagement-service/**/*', name: 'usermanagement-service'
            }  
         }
 
@@ -63,12 +69,28 @@ pipeline {
             }
         }
 
-        stage('Run Acceptance Tests - la-webapp') {
+        stage('Run Acceptance Tests') {
             steps {
                 unstash 'la-webapp'
-                sh 'pwd'
-                sh 'ls -la'
                 sh 'bash run-acceptance-tests-for.sh la-webapp'
+
+                unstash 'applications-service'
+                sh 'bash run-acceptance-tests-for.sh applications-service'
+
+                unstash 'badgemanagement-service'
+                sh 'bash run-acceptance-tests-for.sh badgemanagement-service'
+
+                unstash 'authorisation-service'
+                sh 'bash run-acceptance-tests-for.sh authorisation-service'
+
+                unstash 'message-service'
+                sh 'bash run-acceptance-tests-for.sh message-service'
+
+                unstash 'referencedata-service'
+                sh 'bash run-acceptance-tests-for.sh referencedata-service'
+
+                unstash 'usermanagement-service'
+                sh 'bash run-acceptance-tests-for.sh usermanagement-service'
             }
         }
     }
