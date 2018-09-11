@@ -81,7 +81,7 @@ pipeline {
             }
 
             sh 'bash cleanup.sh' 
-//            deleteDir()
+            //            deleteDir()
         }
         success {
             echo 'I succeeeded!'
