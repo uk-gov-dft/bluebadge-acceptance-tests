@@ -28,6 +28,7 @@ pipeline {
     stages {
         stage('Clone the applications') {
             steps {
+                deleteDir()
                 sh 'bash run-setup-dev-env.sh'
                 sh 'bash run-clone-sources.sh'
             } 
@@ -80,7 +81,7 @@ pipeline {
             }
 
             sh 'bash cleanup.sh' 
-            deleteDir()
+//            deleteDir()
         }
         success {
             echo 'I succeeeded!'
