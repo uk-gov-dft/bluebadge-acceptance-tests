@@ -65,9 +65,7 @@ pipeline {
 
         stage('Run Acceptance Tests - la-webapp') {
             steps {
-                dir('la-webapp'){
-                    unstash 'la-webapp'
-                }
+                unstash 'la-webapp'
                 sh 'pwd'
                 sh 'ls -la'
                 sh 'bash run-acceptance-tests-for.sh la-webapp'
@@ -82,7 +80,7 @@ pipeline {
             }
 
             sh 'bash cleanup.sh' 
-            //deleteDir()
+            deleteDir()
         }
         success {
             echo 'I succeeeded!'
